@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda de Zapatos y Ropa</title>
+    <link rel="stylesheet" href="indes.css">
+</head>
+<body>
+    <header>
+        <h1>Tienda de Zapatos y Ropa</h1>
+        <nav>
+            <ul>
+                <li><a href="#zapatos">Zapatos</a></li>
+                <li class="dropdown">
+                    <a href="javascript:void(0)" class="dropbtn">Ropa</a>
+                    <div class="dropdown-content">
+                        <a href="#blusas">Blusas</a>
+                        <a href="#pantalones">Pantalones</a>
+                        <a href="#camisas">Camisas</a>
+                    </div>
+                </li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="zapatos">
+            <h2>Zapatos</h2>
+            <div class="producto">
+                <img src="imagenzuley1.jpg" alt="Zapato Deportivo">
+                <p>Zapato Deportivo - $50</p>
+                <button onclick="redirectToPurchase('Zapato Deportivo')">Comprar</button>
+            </div>
+            <div class="producto">
+                <img src="imagenzuley2.jpg" alt="Zapato Casual">
+                <p>Zapato Casual - $40</p>
+                <button onclick="redirectToPurchase('Zapato Casual')">Comprar</button>
+            </div>
+        </section>
+        <section id="blusas">
+            <h2>Blusas</h2>
+            <div class="producto">
+                <img src="imagenzuley3.jpg" alt="Blusa Elegante">
+                <p>Blusa Elegante - $30</p>
+                <button onclick="redirectToPurchase('Blusa Elegante')">Comprar</button>
+            </div>
+            <div class="producto">
+                <img src="imagenzuley4.jpg" alt="Blusa Casual">
+                <p>Blusa Casual - $25</p>
+                <button onclick="redirectToPurchase('Blusa Casual')">Comprar</button>
+            </div>
+        </section>
+        <section id="pantalones">
+            <h2>Pantalones</h2>
+            <div class="producto">
+                <img src="imagenzuley5.jpg" alt="Pantalón Formal">
+                <p>Pantalón Formal - $40</p>
+                <button onclick="redirectToPurchase('Pantalón Formal')">Comprar</button>
+            </div>
+            <div class="producto">
+                <img src="imagenzuley6.jpg" alt="Pantalón Casual">
+                <p>Pantalón Casual - $35</p>
+                <button onclick="redirectToPurchase('Pantalón Casual')">Comprar</button>
+            </div>
+        </section>
+        <section id="camisas">
+            <h2>Camisas</h2>
+            <div class="producto">
+                <img src="imagenzuley7.jpg" alt="Camisa Formal">
+                <p>Camisa Formal - $30</p>
+                <button onclick="redirectToPurchase('Camisa Formal')">Comprar</button>
+            </div>
+            <div class="producto">
+                <img src="imagenzuley8.jpg" alt="Camisa Casual">
+                <p>Camisa Casual - $25</p>
+                <button onclick="redirectToPurchase('Camisa Casual')">Comprar</button>
+            </div>
+        </section>
+
+        <section id="compra" style="display: none;">
+            <h2 id="producto">Producto: <span></span></h2>
+            <form id="compraForm">
+                <label for="nombre">Nombre Completo:</label>
+                <input type="text" id="nombre" required>
+
+                <label for="direccion">Dirección:</label>
+                <input type="text" id="direccion" required>
+
+                <label for="tarjeta">Número de Tarjeta:</label>
+                <input type="text" id="tarjeta" required>
+
+                <label for="fecha">Fecha de Expiración:</label>
+                <input type="text" id="fecha" placeholder="MM/AA" required>
+
+                <label for="cvv">CVV:</label>
+                <input type="text" id="cvv" required>
+
+                <button type="submit">Realizar Compra</button>
+            </form>
+            <button onclick="goBack()">Volver a Productos</button>
+        </section>
+    </main>
+    
+    <footer>
+        <p>Contacto: tienda@example.com</p>
+    </footer>
+
+    <script>
+        function redirectToPurchase(producto) {
+            document.querySelector('main > section:not(#compra)').style.display = 'none'; // Oculta todas las secciones de productos
+            document.getElementById('compra').style.display = 'block'; // Muestra el formulario de compra
+            document.querySelector('#producto span').textContent = producto; // Actualiza el producto
+            
+            // Desplazarse suavemente hacia el formulario de compra
+            document.getElementById('compra').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function goBack() {
+            document.getElementById('compra').style.display = 'none'; // Oculta el formulario de compra
+            document.querySelectorAll('main > section').forEach(section => {
+                section.style.display = 'block'; // Muestra todas las secciones de productos
+            });
+        }
+    </script>
+</body>
+</html>
+
